@@ -45,5 +45,10 @@ group :development, :test do
   gem 'activeadmin', github: 'activeadmin'
 
   gem 'devise'
+
+  gem 'polish'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 

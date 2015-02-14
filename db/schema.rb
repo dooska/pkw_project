@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214103905) do
+ActiveRecord::Schema.define(version: 20150214111734) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -45,5 +45,48 @@ ActiveRecord::Schema.define(version: 20150214103905) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
+  create_table "committees", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "committees_voivodeships", force: :cascade do |t|
+    t.integer  "committee_id"
+    t.integer  "voivodeship_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "constituencies", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "voters"
+    t.integer  "used_ballots"
+    t.integer  "invalid_no_chose"
+    t.integer  "invalid_more_choises"
+    t.integer  "invalid_other"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "voivodeships", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "electoral_mandates"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "committe_id"
+    t.integer  "constituency_id"
+    t.integer  "yes_vote"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
 end

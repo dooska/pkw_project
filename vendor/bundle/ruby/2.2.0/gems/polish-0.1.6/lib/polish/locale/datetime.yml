@@ -1,0 +1,19 @@
+pl:
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%e %b"
+      long: "%e %B %Y"
+
+    order:
+      - !ruby/sym day
+      - !ruby/sym month
+      - !ruby/sym year
+
+  time:
+    formats:
+      default: "%a, %e %B %Y, %H:%M:%S"
+      short: "%e %b, %H:%M"
+      long: "%e %B %Y, %H:%M"
+    am: "przed południem"
+    pm: "po południu"

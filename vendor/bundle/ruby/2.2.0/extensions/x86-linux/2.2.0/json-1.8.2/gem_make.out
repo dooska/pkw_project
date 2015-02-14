@@ -1,0 +1,9 @@
+/home/dominika/.rvm/rubies/ruby-2.2.0/bin/ruby -r ./siteconf20150214-16973-hslglz.rb extconf.rb 
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+make: Nie ma nic do zrobienia w `all'.
+
+make "DESTDIR=" install

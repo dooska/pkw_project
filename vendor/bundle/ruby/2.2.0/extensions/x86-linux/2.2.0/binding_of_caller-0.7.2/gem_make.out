@@ -1,0 +1,12 @@
+/home/dominika/.rvm/rubies/ruby-2.2.0/bin/ruby -r ./siteconf20150214-16973-1wo4dkq.rb extconf.rb 
+
+make "DESTDIR=" clean
+make: *** Brak reguł do wykonania obiektu `clean'. Stop.
+
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+make "DESTDIR=" install
+echo "Nada."
+Nada.

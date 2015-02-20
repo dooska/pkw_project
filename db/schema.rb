@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214111734) do
+ActiveRecord::Schema.define(version: 20150218230603) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -57,11 +57,12 @@ ActiveRecord::Schema.define(version: 20150214111734) do
   end
 
   create_table "committees_voivodeships", force: :cascade do |t|
-    t.integer  "committee_id"
-    t.integer  "voivodeship_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer "committee_id"
+    t.integer "voivodeship_id"
   end
+
+  add_index "committees_voivodeships", ["committee_id"], name: "index_committees_voivodeships_on_committee_id"
+  add_index "committees_voivodeships", ["voivodeship_id"], name: "index_committees_voivodeships_on_voivodeship_id"
 
   create_table "constituencies", force: :cascade do |t|
     t.string   "name"
@@ -72,7 +73,10 @@ ActiveRecord::Schema.define(version: 20150214111734) do
     t.integer  "invalid_other"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "voivodeship_id"
   end
+
+  add_index "constituencies", ["voivodeship_id"], name: "index_constituencies_on_voivodeship_id"
 
   create_table "voivodeships", force: :cascade do |t|
     t.string   "name"

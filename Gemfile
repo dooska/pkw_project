@@ -48,6 +48,8 @@ group :development, :test do
 
   gem 'polish'
 
+  gem 'cancancan', '~> 1.10'
+
   gem 'better_errors'
   gem 'binding_of_caller'
 end

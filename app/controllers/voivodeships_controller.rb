@@ -12,26 +12,26 @@ class VoivodeshipsController < ApplicationController
 
 	# GET /voivodeships/1/edit
 	def edit
+    @voivodeship = Voivodeship.find(params[:id])
 	end
 
+  def new
+    @voivodeship = Voivodeship.new
+  end
+
 	# POST /voivodeships
-  # POST /voivodeships.json
   def create
    	@voivodeship = Voivodeship.new(voivodeship_params)
 
-   	respond_to do |format|
-     	if @voivodeship.save
-     		format.html { redirect_to @voivodeship, notice: 'Voivodeship was successfully created.' }
-     		format.json { render :show, status: :created, location: @voivodeship }
-   		else
-     		format.html { render :new }
-     		format.json { render json: @voivodeship.errors, status: :unprocessable_entity }
-   		end
-   	end
+    if @voivodeship.save
+      redirect_to voivodeships_path, notice: "Dodałeś wojewodztwo"
+    else
+      render new_voivodeship_path
+    end  
   end
 
-  # PATCH/PUT /voivodeships/1
   def update
+    @voivodeship = Voivodeship.find(params[:id])
     respond_to do |format|
       if @voivodeship.update(voivodeship_params)
         format.html { redirect_to @voivodeship, notice: 'Voivodeship was successfully updated.' }
@@ -45,6 +45,7 @@ class VoivodeshipsController < ApplicationController
 
   # DELETE /voivodeships/1
   def destroy
+    @voivodeship = Voivodeship.find(params[:id])
     @voivodeship.destroy
     respond_to do |format|
       format.html { redirect_to voivodeships_url, notice: 'Voivodeship was successfully destroyed.' }
@@ -52,8 +53,10 @@ class VoivodeshipsController < ApplicationController
     end
   end
 
-  
-
+  private
+  def voivodeship_params
+    params.require(:voivodeship).permit(:id, :name, :electoral_mandates)  
+  end 
 
 
 

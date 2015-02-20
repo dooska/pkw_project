@@ -1,1 +1,37 @@
-<h1> Okręgi wyborcze <h1>
+<h1> Okręgi wyborcze </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Województwo</th>
+      <th>Voters</th>
+      <th>Used ballots</th>
+      <th>Invalid no chose</th>
+      <th>Invalid more choises</th>
+      <th>Invalid other</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @constituencies.each do |constituency| %>
+      <tr>
+        <td><%= constituency.name %></td>
+        <td><%= constituency.voivodeship %></td>
+        <td><%= constituency.voters %></td>
+        <td><%= constituency.used_ballots %></td>
+        <td><%= constituency.invalid_no_chose %></td>
+        <td><%= constituency.invalid_more_choises %></td>
+        <td><%= constituency.invalid_other %></td>
+        <td><%= link_to 'Show', constituency %></td>
+        <td><%= link_to 'Edit', edit_constituency_path(constituency) %></td>
+        <td><%= link_to 'Destroy', constituency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Dodaj okręg', new_constituency_path %>
